@@ -14,7 +14,7 @@ class TransaksiSeeder extends Seeder
      */
     public function run(): void
     {
-        Pembeli::factory();
+        TransaksiSeeder::factory();
 
     }
 }

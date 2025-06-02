@@ -13,6 +13,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="{{ route('kue.index') }}">Beranda</a>
                 </li>
+                 <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('transaksi.form') ? 'active' : '' }}" href="{{ route('transaksi.form') }}">
+                Transaksi
+            </a>
+        </li>
             </ul>
         </div>
     </div>

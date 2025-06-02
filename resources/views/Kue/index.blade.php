@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')gc_collect_cycles
+@section('content')
 
 <style>
     body {
@@ -54,10 +54,7 @@
                         </p>
 
                         {{-- Tombol Beli --}}
-                        <a href="{{ route('kue.transaksi') }}" class="btn btn-warning w-100 fw-bold">
-                        🛒 Beli Sekarang
-                    </a>
-
+                    <a href="{{ route('kue.pembelian.form') }}" class="btn btn-warning">🛒 Beli Sekarang</a>
                         </form>
                     </div>
                 </div>

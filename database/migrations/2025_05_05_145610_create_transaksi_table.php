@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaksis', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('pembeli_id')->constrained('pembelis')->onDelete('cascade');
-            $table->foreignId('kue_id')->constrained('kues')->onDelete('cascade');
-            $table->integer('jumlah')->default(1);
-            $table->integer('total_harga');
-            $table->timestamps();
+            $table->id(); // kolom id sebagai primary key
+            $table->string('nama');      // nama pembeli
+            $table->string('alamat');    // alamat pembeli
+            $table->string('telepon');   // nomor telepon pembeli
+            $table->string('nama_kue');  // nama kue yang dibeli
+            $table->integer('harga');    // harga kue (integer)
+            $table->timestamps();        // created_at dan updated_at
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('transaksis');
     }
 };
