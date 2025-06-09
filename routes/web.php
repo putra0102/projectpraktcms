@@ -36,3 +36,6 @@ Route::get('/transaksi', [KueController::class, 'formTransaksi'])->name('transak
 Route::post('/transaksi', [KueController::class, 'storeTransaksi'])->name('transaksi.store');
 Route::get('/transaksi/{id}', [KueController::class, 'showTransaksi'])->name('transaksi.show');
 
+Route::get('/pembelian-kue', function () {
+    return 'Selamat datang dii halaman Pembelian Kue Online!';
+})->middleware('check.age');
