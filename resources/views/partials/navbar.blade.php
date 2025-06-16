@@ -17,6 +17,9 @@
             <a class="nav-link {{ request()->routeIs('transaksi.form') ? 'active' : '' }}" href="{{ route('transaksi.form') }}">
                 Transaksi
             </a>
+        <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('kue.upload') }}">Upload Foto</a>
+                </li>
         </li>
             </ul>
         </div>

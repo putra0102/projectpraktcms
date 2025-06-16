@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KueController;
+use App\Http\Controllers\ImageController;
 
 // Halaman utama: daftar kue
 Route::get('/', [KueController::class, 'index'])->name('kue.index');
@@ -39,3 +40,7 @@ Route::get('/transaksi/{id}', [KueController::class, 'showTransaksi'])->name('tr
 Route::get('/pembelian-kue', function () {
     return 'Selamat datang dii halaman Pembelian Kue Online!';
 })->middleware('check.age');
+
+Route::get('/upload', [ImageController::class, 'create'])->name('kue.upload');
+Route::post('/upload', [ImageController::class, 'store'])->name('image.upload');
+Route::delete('/upload/{id}', [ImageController::class, 'destroy'])->name('image.destroy');
