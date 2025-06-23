@@ -44,3 +44,6 @@ Route::get('/pembelian-kue', function () {
 Route::get('/upload', [ImageController::class, 'create'])->name('kue.upload');
 Route::post('/upload', [ImageController::class, 'store'])->name('image.upload');
 Route::delete('/upload/{id}', [ImageController::class, 'destroy'])->name('image.destroy');
+
+Route::get('/cek-transaksi', [KueController::class, 'formCekTransaksi'])->name('form.cek.transaksi');
+Route::get('/cek-transaksi/search', [KueController::class, 'cekTransaksi'])->name('kue.cek');

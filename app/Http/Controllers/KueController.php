@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Kue;
 use App\Models\Pembeli;
@@ -54,7 +54,6 @@ class KueController extends Controller
         return redirect()->route('kue.pembelian.form')->with('success', 'Pembelian berhasil disimpan!');
     }
 
-
     public function formTransaksi()
     {
         return view('kue.show'); // pastikan view ini ada
@@ -91,12 +90,25 @@ class KueController extends Controller
         return view('kue.pembelian', compact('pembelis'));
     }
 
-    // Hapus method daftarPembeli karena sudah tidak dipakai
-    // public function daftarPembeli()
-    // {
-    //     $pembelis = Pembeli::all();
-    //     return view('kue.daftar_pembeli', compact('pembelis'));
-    // }
+    public function formCekTransaksi()
+    {
+        session(['type' => 'cek']);
+        return view('kue.cek');
+    }
+
+    public function cekTransaksi(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer'
+        ]);
+
+        try {
+            $data = Transaksi::findOrFail($request->id);
+            return view('kue.cek', compact('data'));
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('form.cek.transaksi')->withErrors('Transaksi tidak ditemukan.');
+        }
+    }
 
     public function hapusPembeli($id)
     {

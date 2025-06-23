@@ -20,6 +20,9 @@
         <li class="nav-item">
                     <a class="nav-link active" href="{{ route('kue.upload') }}">Upload Foto</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('form.cek.transaksi') }}">Cek</a>
+                </li>
         </li>
             </ul>
         </div>
