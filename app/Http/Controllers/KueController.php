@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Kue;
 use App\Models\Pembeli;
 use App\Models\Transaksi;
@@ -42,17 +43,25 @@ class KueController extends Controller
     }
 
     public function simpanPembelian(Request $request)
-    {
+{
+    try {
         $validated = $request->validate([
             'nama' => 'required|string|max:100',
             'alamat' => 'required|string|max:255',
-            'telepon' => 'required|string|max:20',
+            'telepon' => 'required|numeric',
         ]);
 
         Pembeli::create($validated);
 
-        return redirect()->route('kue.pembelian.form')->with('success', 'Pembelian berhasil disimpan!');
+        return redirect()->route('kue.pembelian.form')
+            ->with('success', 'Pembelian berhasil disimpan!');
+    } catch (\Exception $e) {
+        return redirect()->back()
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
     }
+}
+
 
     public function formTransaksi()
     {
