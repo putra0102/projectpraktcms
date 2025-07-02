@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <h3 class="text-center mb-4">Login Sistem Klinik Gigi 🦷</h3>
+    <h3 class="text-center mb-4">Login Sistem Penjualan Toko Roti Budi</h3>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif

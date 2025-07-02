@@ -58,7 +58,7 @@ class KueController extends Controller
     } catch (\Exception $e) {
         return redirect()->back()
             ->withInput()
-            ->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
+            ->with('error', 'Terjadi kesalahan. Silakan coba lagii.');
     }
 }
 
